@@ -39,7 +39,6 @@ git.gitTagToVersionNumber := {
 publishTo := Some("temp" at "file:///tmp/repository")
 makeDeploymentSettings(Universal, packageBin in Universal, "zip")
 
-
 // sbt release
 def setVersionOnly(selectVersion: Versions => String): ReleaseStep =  { st: State =>
   val vs = st.get(ReleaseKeys.versions).getOrElse(sys.error("No versions are set! Was this release part executed before inquireVersions?"))
