@@ -1,6 +1,8 @@
+import com.typesafe.sbt.packager.SettingsHelper._
+
 name := """play-learning"""
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, BuildInfoPlugin, GitVersioning, GitBranchPrompt)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, BuildInfoPlugin, GitVersioning, GitBranchPrompt, JavaAppPackaging)
                                         .settings(
                                           buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
                                           buildInfoPackage := "com.porsetech"
@@ -28,5 +30,9 @@ git.gitTagToVersionNumber := {
   case VersionRegex(v,s) => Some(s"$v-$s-SNAPSHOT")
   case _ => None
 }
+
+publishTo := Some("temp" at "file:./target/packagedbin")
+makeDeploymentSettings(Universal, packageBin in Universal, "zip")
+
 
 
