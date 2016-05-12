@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
 //version := "1.0-SNAPSHOT"
 
 git.useGitDescribe := true
-git.baseVersion := "0.0.1"
+git.baseVersion := "0.0.0"
 
 val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
 git.gitTagToVersionNumber := {
